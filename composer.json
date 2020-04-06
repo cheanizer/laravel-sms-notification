@@ -1,41 +1,46 @@
 {
-    "name": "nuwira/laravel-sms-notification",
-    "description": "Nuwira SMS Notifications for Laravel",
-    "homepage": "https://github.com/Nuwira/laravel-sms-notification",
-    "license": "MIT",
+    "name": "nuwira/smsgw",
+    "description": "Nuwira SMS API client library",
+    "type": "library",
     "authors": [
         {
             "name": "Muhammad Zamroni",
-            "email": "zam@nuwira.co.id",
-            "homepage": "https://matriphe.com",
-            "role": "Developer"
+            "email": "zam@nuwira.co.id"
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "nuwira/smsgw": "~2.3",
-        "illuminate/notifications": "^5.3",
-        "illuminate/support": "^5.3"
+        "giggsey/libphonenumber-for-php": "~8.0",
+        "guzzlehttp/guzzle": "~6.3",
+        "illuminate/support": "~5.8"
     },
     "require-dev": {
-        "fzaninotto/faker": "^1.6",
-        "mockery/mockery": "^0.9.5",
-        "phpunit/phpunit": "^5.6"
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^6.5"
     },
     "autoload": {
         "psr-4": {
-            "Nuwira\\LaravelSmsNotification\\": "src"
+            "Nuwira\\Smsgw\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Nuwira\\LaravelSmsNotification\\Test\\": "tests"
+            "Nuwira\\Smsgw\\Tests\\": "tests/"
         }
     },
-    "config": {
+    "config":{
+        "preferred-install": "dist",
         "sort-packages": true
     },
-    "scripts": {
-        "test": "phpunit"
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nuwira\\Smsgw\\SmsServiceProvider"
+            ],
+            "aliases": {
+                "SMS": "Nuwira\\Smsgw\\SmsFacade"
+            }
+        }
     }
 }
